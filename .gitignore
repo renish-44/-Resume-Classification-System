@@ -1,0 +1,19 @@
+__pycache__/
+.ipynb_checkpoints/
+venv/
+.venv/
+env/
+*.pyc
+.env
+# large datasets
+*.csv
+*.xlsx
+# model files
+*.pkl
+*.joblib
+*.h5
+# temporary files
+*.tmp
+*.temp
+# OS files
+.DS_Store
