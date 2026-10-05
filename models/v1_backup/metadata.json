@@ -1,0 +1,41 @@
+{
+    "model_name": "Linear SVM (C=5.0)",
+    "preprocessing_variant": "stopwords",
+    "tfidf_params": {
+        "ngram_range": "(1, 2)",
+        "min_df": 2,
+        "max_df": 0.85,
+        "max_features": 5000,
+        "sublinear_tf": true
+    },
+    "categories": [
+        "ACCOUNTANT",
+        "ADVOCATE",
+        "AGRICULTURE",
+        "APPAREL",
+        "ARTS",
+        "AUTOMOBILE",
+        "AVIATION",
+        "BANKING",
+        "BPO",
+        "BUSINESS-DEVELOPMENT",
+        "CHEF",
+        "CONSTRUCTION",
+        "CONSULTANT",
+        "DESIGNER",
+        "DIGITAL-MEDIA",
+        "ENGINEERING",
+        "FINANCE",
+        "FITNESS",
+        "HEALTHCARE",
+        "HR",
+        "INFORMATION-TECHNOLOGY",
+        "PUBLIC-RELATIONS",
+        "SALES",
+        "TEACHER"
+    ],
+    "test_macro_f1": 0.6706,
+    "test_accuracy": 0.7185,
+    "cv_macro_f1_mean": 0.6513,
+    "random_state": 42
+}
