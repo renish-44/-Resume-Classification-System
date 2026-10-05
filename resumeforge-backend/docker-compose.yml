@@ -1,0 +1,46 @@
+# Local orchestration for the ResumeForge inference API.
+#
+#   docker compose up --build
+#   docker compose exec api python -m pytest        # run the test suite
+#
+# The model artifacts are mounted READ-ONLY: the container can load them and
+# never writes to them.
+
+services:
+  api:
+    build: .
+    image: resumeforge-backend:latest
+    container_name: resumeforge-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      ENVIRONMENT: development
+      LOG_LEVEL: INFO
+      MODEL_PATH: models/model.joblib
+      VECTORIZER_PATH: models/vectorizer.joblib
+      CLASSIFIER_PATH: models/classifier.joblib
+      LABEL_ENCODER_PATH: models/label_encoder.joblib
+      MODEL_METADATA_PATH: models/metadata.json
+      REPORTS_DIR: reports
+      ALLOWED_ORIGINS: http://localhost:5173
+      MAX_UPLOAD_MB: "5"
+      MAX_TEXT_CHARS: "100000"
+      MIN_TEXT_CHARS: "50"
+      TOP_K: "5"
+      CONFIDENCE_THRESHOLD: "0.5"
+      APPLY_EXTERNAL_PREPROCESSING: "true"
+      RATE_LIMIT: 30/minute
+    volumes:
+      - ./models:/app/models:ro
+      - ./reports:/app/reports:ro
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request, sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4).status == 200 else 1)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s

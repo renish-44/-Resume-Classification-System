@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070A12" />
+      <stop offset="100%" stop-color="#0E1421" />
+    </linearGradient>
+    <linearGradient id="rf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6A63F5" />
+      <stop offset="55%" stop-color="#8389FF" />
+      <stop offset="100%" stop-color="#22D3EE" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="140" cy="120" r="240" fill="#6A63F5" opacity="0.16" />
+  <circle cx="1080" cy="540" r="260" fill="#22D3EE" opacity="0.12" />
+  <g transform="translate(80 92)">
+    <rect width="52" height="52" rx="14" fill="none" stroke="url(#rf)" stroke-width="2" />
+    <text x="26" y="37" font-family="Segoe UI, Arial" font-size="30" font-weight="700" fill="url(#rf)" text-anchor="middle">R</text>
+    <text x="72" y="36" font-family="Segoe UI, Arial" font-size="30" font-weight="700" fill="#F5F7FB">ResumeForge</text>
+  </g>
+  <text x="80" y="290" font-family="Segoe UI, Arial" font-size="62" font-weight="700" fill="#F5F7FB">Classify resumes instantly.</text>
+  <text x="80" y="366" font-family="Segoe UI, Arial" font-size="62" font-weight="700" fill="url(#rf)">Understand every decision.</text>
+  <text x="80" y="428" font-family="Segoe UI, Arial" font-size="26" fill="#A8B4CC">TF-IDF · Naive Bayes · Logistic Regression · Linear SVM · Word2Vec + BiLSTM</text>
+  <rect x="80" y="486" width="392" height="60" rx="14" fill="url(#rf)" />
+  <text x="276" y="524" font-family="Segoe UI, Arial" font-size="24" font-weight="600" fill="#070A12" text-anchor="middle">Try the live demo</text>
+  <text x="80" y="586" font-family="Segoe UI, Arial" font-size="20" fill="#7C8AAA">Built for SAMATRIX RESUMEFORGE 2026</text>
+</svg>

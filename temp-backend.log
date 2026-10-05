@@ -1,0 +1,50 @@
+Started server process [14176] request_id=-
+Waiting for application startup. request_id=-
+startup request_id=- environment='development' version='1.0.0'
+model_load_failed request_id=- classifier_path='models/classifier.joblib' model_path='models/model.joblib' reason='No model artifacts found. Checked: C:\\Users\\A\\OneDrive\\Desktop\\RCS\\resumeforge-backend\\models\\model.joblib, C:\\Users\\A\\OneDrive\\Desktop\\RCS\\resumeforge-backend\\models\\vectorizer.joblib, C:\\Users\\A\\OneDrive\\Desktop\\RCS\\resumeforge-backend\\models\\classifier.joblib. Missing: C:\\Users\\A\\OneDrive\\Desktop\\RCS\\resumeforge-backend\\models\\vectorizer.joblib, C:\\Users\\A\\OneDrive\\Desktop\\RCS\\resumeforge-backend\\models\\classifier.joblib. Export the fitted pipeline to MODEL_PATH (or both parts) and restart the API.' vectorizer_path='models/vectorizer.joblib'
+Application startup complete. request_id=-
+Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit) request_id=-
+127.0.0.1:64044 - "GET /health HTTP/1.1" 200 request_id=3a6938a2d7204da29d577177a8298a71
+request_completed request_id=3a6938a2d7204da29d577177a8298a71 latency_ms=13.41 method='GET' path='/health' status_code=200
+127.0.0.1:64057 - "OPTIONS /predict HTTP/1.1" 200 request_id=fb43b36172314b0da103294550410ac6
+request_completed request_id=fb43b36172314b0da103294550410ac6 latency_ms=0.3 method='OPTIONS' path='/predict' status_code=200
+127.0.0.1:64057 - "OPTIONS /predict HTTP/1.1" 200 request_id=3a504dd6ef6246ccb1e8ca89e84add0d
+request_completed request_id=3a504dd6ef6246ccb1e8ca89e84add0d latency_ms=0.35 method='OPTIONS' path='/predict' status_code=200
+127.0.0.1:64057 - "OPTIONS /predict HTTP/1.1" 200 request_id=a31eb7f424c042d7b807662f2c3b0f8b
+request_completed request_id=a31eb7f424c042d7b807662f2c3b0f8b latency_ms=0.44 method='OPTIONS' path='/predict' status_code=200
+127.0.0.1:64057 - "OPTIONS /predict HTTP/1.1" 400 request_id=6f6418ec1a454c66be87fcdc9edcfe05
+request_completed request_id=6f6418ec1a454c66be87fcdc9edcfe05 latency_ms=0.46 method='OPTIONS' path='/predict' status_code=400
+127.0.0.1:64071 - "GET /health HTTP/1.1" 200 request_id=5faaa0919ba745709bdcbd3e9e200651
+request_completed request_id=5faaa0919ba745709bdcbd3e9e200651 latency_ms=0.54 method='GET' path='/health' status_code=200
+127.0.0.1:64071 - "POST /predict HTTP/1.1" 503 request_id=195f4393620c4346acb04c07d8718f49
+request_completed request_id=195f4393620c4346acb04c07d8718f49 latency_ms=1.74 method='POST' path='/predict' status_code=503
+127.0.0.1:64383 - "POST /predict HTTP/1.1" 503 request_id=bb3248762ad9427bab48f9d4c7771e15
+request_completed request_id=bb3248762ad9427bab48f9d4c7771e15 latency_ms=0.96 method='POST' path='/predict' status_code=503
+127.0.0.1:64383 - "GET /results HTTP/1.1" 200 request_id=20b03fe2dc3a401e9e8c88c172c5886e
+request_completed request_id=20b03fe2dc3a401e9e8c88c172c5886e latency_ms=2.77 method='GET' path='/results' status_code=200
+127.0.0.1:64383 - "GET /classes HTTP/1.1" 503 request_id=a06ecf48d2024f8195d55f6390134b2a
+request_completed request_id=a06ecf48d2024f8195d55f6390134b2a latency_ms=0.66 method='GET' path='/classes' status_code=503
+127.0.0.1:64383 - "GET /model-info HTTP/1.1" 503 request_id=e264ea9769b94fb8b25a345af11d62fe
+request_completed request_id=e264ea9769b94fb8b25a345af11d62fe latency_ms=1.68 method='GET' path='/model-info' status_code=503
+127.0.0.1:51126 - "POST /predict HTTP/1.1" 503 request_id=045083f3e1fc476b989b133e00880e55
+request_completed request_id=045083f3e1fc476b989b133e00880e55 latency_ms=1.69 method='POST' path='/predict' status_code=503
+127.0.0.1:65195 - "GET /health HTTP/1.1" 200 request_id=83af4f77bc714858955c3995517e5e83
+request_completed request_id=83af4f77bc714858955c3995517e5e83 latency_ms=1.4 method='GET' path='/health' status_code=200
+127.0.0.1:65195 - "GET /health HTTP/1.1" 200 request_id=f126eb2e8c3d4e85b312e6aaa75e8642
+request_completed request_id=f126eb2e8c3d4e85b312e6aaa75e8642 latency_ms=1.53 method='GET' path='/health' status_code=200
+127.0.0.1:56058 - "GET /health HTTP/1.1" 200 request_id=7696fc384d1c4315ad99e06d13d790fc
+request_completed request_id=7696fc384d1c4315ad99e06d13d790fc latency_ms=0.85 method='GET' path='/health' status_code=200
+127.0.0.1:56059 - "GET /docs HTTP/1.1" 200 request_id=95bc84189ed245d8aaa48b02fa6ab428
+request_completed request_id=95bc84189ed245d8aaa48b02fa6ab428 latency_ms=0.39 method='GET' path='/docs' status_code=200
+127.0.0.1:56060 - "GET /classes HTTP/1.1" 503 request_id=0ce42586af1a4b5dbb181451c056e264
+request_completed request_id=0ce42586af1a4b5dbb181451c056e264 latency_ms=0.44 method='GET' path='/classes' status_code=503
+127.0.0.1:54402 - "GET / HTTP/1.1" 404 request_id=ae31431f5d5940abbc8bc6184ba64f50
+request_completed request_id=ae31431f5d5940abbc8bc6184ba64f50 latency_ms=1.15 method='GET' path='/' status_code=404
+127.0.0.1:54402 - "GET /favicon.ico HTTP/1.1" 404 request_id=def19eea619546ebaa791d222f14fbc5
+request_completed request_id=def19eea619546ebaa791d222f14fbc5 latency_ms=1.5 method='GET' path='/favicon.ico' status_code=404
+127.0.0.1:64817 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 request_id=696fa1b4613f41559f12137521c4a3ca
+request_completed request_id=696fa1b4613f41559f12137521c4a3ca latency_ms=0.61 method='GET' path='/.well-known/appspecific/com.chrome.devtools.json' status_code=404
+127.0.0.1:65216 - "GET /health HTTP/1.1" 200 request_id=496d5d0a7fbb40e999480d8f60df1fe8
+request_completed request_id=496d5d0a7fbb40e999480d8f60df1fe8 latency_ms=0.79 method='GET' path='/health' status_code=200
+127.0.0.1:65216 - "GET /health HTTP/1.1" 200 request_id=48fc126378004e3d8e25d4c7a1876a11
+request_completed request_id=48fc126378004e3d8e25d4c7a1876a11 latency_ms=0.74 method='GET' path='/health' status_code=200

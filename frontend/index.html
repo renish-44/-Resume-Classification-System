@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <title>ResumeForge — Resume Classification System | SAMATRIX RESUMEFORGE 2026</title>
+    <meta
+      name="description"
+      content="ResumeForge turns raw resume text into a predicted job category with calibrated confidence scores. A classical ML and deep learning classification pipeline built for SAMATRIX RESUMEFORGE 2026."
+    />
+    <meta
+      name="keywords"
+      content="resume classification, TF-IDF, Naive Bayes, Logistic Regression, Linear SVM, Word2Vec, BiLSTM, machine learning, NLP, ResumeForge"
+    />
+    <meta name="author" content="ResumeForge" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#070A12" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Applies the stored theme before first paint so there is no flash. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('resumeforge:theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          var root = document.documentElement;
+          root.classList.toggle('dark', theme === 'dark');
+          root.classList.toggle('light', theme === 'light');
+          root.style.colorScheme = theme;
+        } catch (error) {
+          /* storage blocked: fall back to the classes already on <html> */
+        }
+      })();
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ResumeForge" />
+    <meta
+      property="og:title"
+      content="ResumeForge — Classify resumes instantly. Understand every decision."
+    />
+    <meta
+      property="og:description"
+      content="An end-to-end ML system that classifies resumes into job categories with confidence scores and top-N predictions."
+    />
+    <meta property="og:image" content="/og-cover.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ResumeForge — Resume Classification System" />
+    <meta
+      name="twitter:description"
+      content="Turn raw resume text into a predicted job category with confidence scores."
+    />
+    <meta name="twitter:image" content="/og-cover.svg" />
+
+    <!-- Fonts: Inter (body) + Plus Jakarta Sans (display) + JetBrains Mono (code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      />
+    </noscript>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      ResumeForge requires JavaScript. The project README contains the full methodology and results.
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

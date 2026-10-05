@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   DESIGN TOKENS
+   Semantic colours are stored as space-separated RGB triplets so Tailwind can
+   apply opacity modifiers (e.g. `bg-surface/70`).
+   ========================================================================== */
+
+@layer base {
+  :root,
+  html.dark {
+    color-scheme: dark;
+
+    --c-app: 7 10 18;
+    --c-surface: 14 20 33;
+    --c-elevated: 21 28 45;
+    --c-line: 255 255 255;
+    --c-content: 237 241 248;
+    --c-muted: 168 180 204;
+    --c-faint: 124 138 170;
+    --c-ring: 131 137 255;
+    --c-glass: 14 20 33;
+    --line-alpha: 0.09;
+    --grain-opacity: 0.035;
+    --mesh-opacity: 1;
+  }
+
+  html.light {
+    color-scheme: light;
+
+    --c-app: 246 248 252;
+    --c-surface: 255 255 255;
+    --c-elevated: 255 255 255;
+    --c-line: 12 18 32;
+    --c-content: 14 20 33;
+    --c-muted: 71 82 107;
+    --c-faint: 92 106 136;
+    --c-ring: 90 68 232;
+    --c-glass: 255 255 255;
+    --line-alpha: 0.09;
+    --grain-opacity: 0.025;
+    --mesh-opacity: 0.55;
+  }
+
+  * {
+    border-color: rgb(var(--c-line) / var(--line-alpha));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-app font-sans text-content antialiased;
+    min-height: 100dvh;
+    background-image:
+      radial-gradient(circle at 15% -10%, rgb(106 99 245 / 0.16), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgb(34 211 238 / 0.1), transparent 40%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-semibold tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-ring));
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: rgb(106 99 245 / 0.32);
+    color: rgb(var(--c-content));
+  }
+
+  /* Tabular numbers keep metric tables from jittering. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================================
+   COMPONENT PRIMITIVES
+   ========================================================================== */
+
+@layer components {
+  /* --- Glassmorphism ----------------------------------------------------- */
+  .glass {
+    background-color: rgb(var(--c-glass) / 0.72);
+    border: 1px solid rgb(var(--c-line) / var(--line-alpha));
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .glass-strong {
+    background-color: rgb(var(--c-glass) / 0.88);
+    border: 1px solid rgb(var(--c-line) / 0.12);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+  }
+
+  .card-hover {
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgb(var(--c-ring) / 0.45);
+    box-shadow: 0 26px 60px -34px rgb(2 4 12 / 0.8);
+  }
+
+  /* --- Gradient treatments ---------------------------------------------- */
+  .text-gradient {
+    background-image: linear-gradient(115deg, #8389ff 0%, #a3aeff 40%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-ring {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .gradient-ring::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--angle, 0deg),
+      rgb(106 99 245 / 0.9),
+      rgb(34 211 238 / 0.9),
+      rgb(106 99 245 / 0.9)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .gradient-ring:hover::before,
+  .gradient-ring:focus-visible::before {
+    opacity: 1;
+    animation: rf-spin-angle 5s linear infinite;
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes rf-spin-angle {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  /* --- Gradient mesh + grain -------------------------------------------- */
+  .mesh-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--mesh-opacity);
+    background:
+      radial-gradient(closest-side, rgb(106 99 245 / 0.55), transparent) 12% 18% / 60% 60% no-repeat,
+      radial-gradient(closest-side, rgb(34 211 238 / 0.35), transparent) 88% 8% / 55% 55% no-repeat,
+      radial-gradient(closest-side, rgb(131 137 255 / 0.4), transparent) 60% 88% / 65% 55% no-repeat;
+    filter: blur(10px);
+  }
+
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* --- Skeletons --------------------------------------------------------- */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(var(--c-muted) / 0.16);
+    border-radius: 0.5rem;
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--c-content) / 0.09),
+      transparent
+    );
+    animation: rf-shimmer 1.8s infinite;
+  }
+
+  @keyframes rf-shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* --- Data table -------------------------------------------------------- */
+  .data-table {
+    @apply w-full border-collapse text-left text-sm;
+  }
+
+  .data-table th {
+    @apply whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wider text-muted;
+  }
+
+  .data-table td {
+    @apply border-t border-line px-4 py-3 align-middle text-content;
+  }
+
+  .data-table tbody tr {
+    transition: background-color 0.18s ease;
+  }
+
+  .data-table tbody tr:hover {
+    background-color: rgb(var(--c-muted) / 0.06);
+  }
+
+  /* --- Recharts overrides ---------------------------------------------- */
+  .recharts-cartesian-axis-tick text {
+    fill: rgb(var(--c-muted));
+    font-size: 12px;
+  }
+
+  .recharts-cartesian-grid line {
+    stroke: rgb(var(--c-line) / 0.08);
+  }
+
+  .recharts-default-tooltip {
+    border-radius: 0.85rem !important;
+  }
+
+  .recharts-surface {
+    overflow: visible;
+  }
+
+  /* --- Utilities --------------------------------------------------------- */
+  .stack-divider > * + * {
+    border-top: 1px solid rgb(var(--c-line) / var(--line-alpha));
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

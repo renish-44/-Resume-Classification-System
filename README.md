@@ -981,3 +981,31 @@ badge is shown.
 Until one is added, the default copyright applies and the repository is not formally open source.
 Recommended next step: add a `LICENSE` file (MIT or Apache-2.0), then reference it from this
 section and from the header badges.
+
+---
+
+## Backend service (added)
+
+The inference-only FastAPI backend now lives in **`resumeforge-backend/`** — a self-contained
+service with its own README, `.env.example`, tests and Dockerfile. It loads the trained
+TF-IDF (1-2 grams) + Logistic Regression artifact and exposes `POST /predict`
+(multipart `file` or JSON `{"text": "..."}`), `POST /predict/batch`, `GET /health`,
+`GET /classes`, `GET /model-info` and `GET /results`.
+
+```bash
+cd resumeforge-backend
+python -m venv .venv && .venv/Scripts/activate     # Windows; source .venv/bin/activate elsewhere
+python -m pip install -r requirements.txt
+uvicorn api.main:app --reload --port 8000          # docs at http://localhost:8000/docs
+```
+
+Point the frontend at it with `VITE_API_URL=http://localhost:8000` in
+`frontend/.env.local`, and place the trained artifacts in `resumeforge-backend/models/`
+(`model.joblib`, or `vectorizer.joblib` + `classifier.joblib`, plus an optional
+`metadata.json` and `label_encoder.joblib`).
+
+This partially addresses action-plan items 3 (FastAPI service) and 7 (pytest suite) above. It
+does **not** address item 1 or 2: no training code, no metrics and no artifact are in the
+repository yet, so every metric in this document is still `Pending`. See
+[`resumeforge-backend/README.md`](resumeforge-backend/README.md) for the full API reference,
+settings table and the security/privacy checklist.

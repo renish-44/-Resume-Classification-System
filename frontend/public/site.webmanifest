@@ -1,0 +1,17 @@
+{
+  "name": "ResumeForge — Resume Classification System",
+  "short_name": "ResumeForge",
+  "description": "Classify resumes into job categories with an end-to-end ML pipeline.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070A12",
+  "theme_color": "#070A12",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

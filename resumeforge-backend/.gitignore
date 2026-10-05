@@ -1,0 +1,44 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets and local configuration - only .env.example is committed
+.env
+.env.*
+!.env.example
+
+# Model artifacts (binary, produced by the training pipeline, not source).
+# models/metadata.json is a small text file and may be committed.
+models/*.joblib
+models/*.pkl
+models/*.pickle
+models/*.h5
+models/*.onnx
+
+# Datasets and uploads - never commit personal data
+data/
+*.csv
+*.xlsx
+*.docx
+*.pdf
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+*.tmp
+*.temp
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
