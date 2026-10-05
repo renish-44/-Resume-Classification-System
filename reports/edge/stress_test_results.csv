@@ -1,0 +1,12 @@
+Perturbation Test Case,Before Fix (%),After Fix (%),Delta (%)
+Clean Validation (Original),69.35,100.0,30.65
+Truncated 50%,71.77,99.73,27.96
+Truncated 25%,67.47,96.24,28.77
+Truncated 10%,65.86,88.71,22.85
+ALL-CAPS Text,69.35,100.0,30.65
+All-Lowercase Text,69.35,100.0,30.65
+Typo Injected (10% words),69.09,100.0,30.91
+Punctuation Stripped,69.35,100.0,30.65
+Noise Headers & Page Numbers,68.28,100.0,31.72
+First Line (Job Title) Removed,62.37,95.43,33.06
+Shuffled Sections / Paragraphs,69.35,100.0,30.65

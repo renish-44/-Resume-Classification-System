@@ -1,0 +1,66 @@
+{
+    "pipeline_version": "2.0.0 (Calibrated FeatureUnion)",
+    "model_architecture": "CalibratedClassifierCV(LinearSVC) + FeatureUnion(Word+Char)",
+    "features": {
+        "word_ngram_range": "(1, 2)",
+        "char_ngram_range": "(3, 5)",
+        "sublinear_tf": true
+    },
+    "calibration": "sigmoid (Platt Scaling)",
+    "confidence_threshold_recommended": 0.25,
+    "margin_threshold_recommended": 0.03,
+    "classes": [
+        "ACCOUNTANT",
+        "ADVOCATE",
+        "AGRICULTURE",
+        "APPAREL",
+        "ARTS",
+        "AUTOMOBILE",
+        "AVIATION",
+        "BANKING",
+        "BPO",
+        "BUSINESS-DEVELOPMENT",
+        "CHEF",
+        "CONSTRUCTION",
+        "CONSULTANT",
+        "DESIGNER",
+        "DIGITAL-MEDIA",
+        "ENGINEERING",
+        "FINANCE",
+        "FITNESS",
+        "HEALTHCARE",
+        "HR",
+        "INFORMATION-TECHNOLOGY",
+        "PUBLIC-RELATIONS",
+        "SALES",
+        "TEACHER"
+    ],
+    "metrics_before": {
+        "val_accuracy": 0.6935,
+        "val_macro_f1": 0.6542,
+        "val_weighted_f1": 0.682,
+        "test_accuracy": 0.7185,
+        "test_macro_precision": 0.6903,
+        "test_macro_recall": 0.6777,
+        "test_macro_f1": 0.6706,
+        "test_weighted_f1": 0.706,
+        "test_brier_score": 0.7927,
+        "test_ece": 0.573,
+        "cv_macro_f1_mean": 0.6513,
+        "cv_macro_f1_std": 0.0129,
+        "cv_folds": [
+            0.664,
+            0.6326,
+            0.6412,
+            0.6526,
+            0.6662
+        ]
+    },
+    "metrics_after": {
+        "test_accuracy": 0.7239,
+        "test_macro_f1": 0.7034,
+        "test_weighted_f1": 0.7175,
+        "test_brier_score": 0.4203,
+        "test_ece": 0.1547
+    }
+}

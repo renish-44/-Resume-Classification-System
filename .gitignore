@@ -5,15 +5,27 @@ venv/
 env/
 *.pyc
 .env
-# large datasets
-*.csv
+
+# Large model files (>50MB) - too large for GitHub
+models/*.joblib
+models/v1_backup/*.joblib
+
+# Raw datasets (sensitive / large)
+data/raw/
+data/data-*/
+data/Resume/
+
+# Processed splits (reproducible from raw)
+data/processed/
+
+# Large data files
 *.xlsx
-# model files
-*.pkl
-*.joblib
-*.h5
-# temporary files
+*.pdf
+
+# Temporary files
 *.tmp
 *.temp
+
 # OS files
 .DS_Store
+Thumbs.db

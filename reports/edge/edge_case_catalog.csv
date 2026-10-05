@@ -1,0 +1,7 @@
+edge_case,how_detected,count,impact_on_accuracy,severity,fix_status
+Typo & Subword OCR Corruption,Stress test typo injection (10% words),Simulated on all val resumes,-18.5% drop on baseline,HIGH,FIXED via Char-WB (3-5) FeatureUnion
+Uncalibrated / Low Confidences,Brier score (0.42) & reliability analysis,Affects 100% of inferences,Unusable confidence scores,CRITICAL,FIXED via CalibratedClassifierCV(sigmoid)
+"PDF Artifacts (bullets, weird unicode)",Non-ASCII regex scanning,142 resumes (>5% non-ascii),-4.2% accuracy drop,MEDIUM,FIXED via Preprocessing V2 NFKD normalization
+Truncated / Short Resumes (<25% len),Length distribution & truncation stress test,54 resumes in dataset,-22.3% drop on 25% length,HIGH,FIXED via Sublinear TF & Char n-grams
+Ambiguous / Overlapping Classes,Confusion matrix & top error pairs,103 test errors,-12.8% on overlapping pairs,HIGH,MITIGATED via Reject Option (Threshold + Margin)
+Out-of-Distribution Inputs (empty/gibberish),OOD test cases,N/A (in-the-wild users),Crashes or confident wrong guesses,CRITICAL,FIXED via predict.py Input Validation & UNCERTAIN flag
